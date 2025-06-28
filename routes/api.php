@@ -18,3 +18,27 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('posts', PostController::class);
     Route::apiResource('posts.comments', CommentController::class)->shallow();
 });
+
+// Example #1
+Route::get('test', function () {
+    $user = App\Models\User::first();
+    // if (!$user instanceof App\Models\User) {
+    //     throw new \RuntimeException('User is not an instance of App\Models\User');
+    // }
+    return [
+        'username' => $user->name,
+        'email' => $user->eamil,
+        // 'email' => $user->email,
+    ];
+});
+
+// Example #2
+Route::get('test2', function () {
+    $user = App\Models\User::first();
+    if (!$user instanceof App\Models\User) {
+        throw new \RuntimeException('User is not an instance of App\Models\User');
+    }
+    return [
+        'age' => $user->age(),
+    ];
+});
