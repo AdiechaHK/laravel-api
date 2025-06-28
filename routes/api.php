@@ -18,7 +18,3 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::apiResource('posts', PostController::class);
     Route::apiResource('posts.comments', CommentController::class)->shallow();
 });
-
-Route::get('test', function () {
-    return 'test';
-});
