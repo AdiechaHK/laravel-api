@@ -21,7 +21,6 @@ class JWTMiddleware
      */
     public function handle(Request $request, Closure $next): JsonResponse|Response|RedirectResponse
     {
-        dd("test in middleware");
         try {
             $user = JWTAuth::parseToken()->authenticate();
         } catch (Exception $e) {

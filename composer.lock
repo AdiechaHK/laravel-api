@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "168b88df15b5281f4873323f2ce137c1",
+    "content-hash": "311c5c3b955ea029f72045c5b3a74bc7",
     "packages": [
         {
             "name": "brick/math",
@@ -7509,6 +7509,147 @@
             "time": "2024-09-22T07:54:40+00:00"
         },
         {
+            "name": "pestphp/pest-plugin-stressless",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pestphp/pest-plugin-stressless.git",
+                "reference": "a94de9e2beec193e65a583baa8cee86d893fcc75"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pestphp/pest-plugin-stressless/zipball/a94de9e2beec193e65a583baa8cee86d893fcc75",
+                "reference": "a94de9e2beec193e65a583baa8cee86d893fcc75",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-zip": "*",
+                "pestphp/pest": "^3.7.1",
+                "pestphp/pest-plugin": "^3.0.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "pestphp/pest-dev-tools": "^2.17"
+            },
+            "type": "library",
+            "extra": {
+                "pest": {
+                    "plugins": [
+                        "Pest\\Stressless\\Plugin"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Autoload.php"
+                ],
+                "psr-4": {
+                    "Pest\\Stressless\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Stressless plugin for Pest",
+            "keywords": [
+                "framework",
+                "pest",
+                "php",
+                "plugin",
+                "test",
+                "testing",
+                "unit"
+            ],
+            "support": {
+                "source": "https://github.com/pestphp/pest-plugin-stressless/tree/v3.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/nunomaduro",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-12-16T03:06:08+00:00"
+        },
+        {
+            "name": "pestphp/pest-plugin-type-coverage",
+            "version": "v3.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pestphp/pest-plugin-type-coverage.git",
+                "reference": "78d65c9c4f0a77e0aab5c0d70991bda20e7821d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pestphp/pest-plugin-type-coverage/zipball/78d65c9c4f0a77e0aab5c0d70991bda20e7821d9",
+                "reference": "78d65c9c4f0a77e0aab5c0d70991bda20e7821d9",
+                "shasum": ""
+            },
+            "require": {
+                "pestphp/pest-plugin": "^3.0.0",
+                "php": "^8.2",
+                "phpstan/phpstan": "^1.12.21|^2.1.12",
+                "tomasvotruba/type-coverage": "^1.0.0|^2.0.2"
+            },
+            "require-dev": {
+                "pestphp/pest": "^3.8.2",
+                "pestphp/pest-dev-tools": "^3.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "pest": {
+                    "plugins": [
+                        "Pest\\TypeCoverage\\Plugin"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pest\\TypeCoverage\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The Type Coverage plugin for Pest PHP.",
+            "keywords": [
+                "coverage",
+                "framework",
+                "pest",
+                "php",
+                "plugin",
+                "test",
+                "testing",
+                "type-coverage",
+                "unit"
+            ],
+            "support": {
+                "source": "https://github.com/pestphp/pest-plugin-type-coverage/tree/v3.5.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-04-20T21:49:49+00:00"
+        },
+        {
             "name": "phar-io/manifest",
             "version": "2.0.4",
             "source": {
@@ -9572,6 +9713,63 @@
                 }
             ],
             "time": "2024-03-03T12:36:25+00:00"
+        },
+        {
+            "name": "tomasvotruba/type-coverage",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TomasVotruba/type-coverage.git",
+                "reference": "d033429580f2c18bda538fa44f2939236a990e0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TomasVotruba/type-coverage/zipball/d033429580f2c18bda538fa44f2939236a990e0c",
+                "reference": "d033429580f2c18bda538fa44f2939236a990e0c",
+                "shasum": ""
+            },
+            "require": {
+                "nette/utils": "^3.2 || ^4.0",
+                "php": "^7.4 || ^8.0",
+                "phpstan/phpstan": "^2.0"
+            },
+            "type": "phpstan-extension",
+            "extra": {
+                "phpstan": {
+                    "includes": [
+                        "config/extension.neon"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TomasVotruba\\TypeCoverage\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Measure type coverage of your project",
+            "keywords": [
+                "phpstan-extension",
+                "static analysis"
+            ],
+            "support": {
+                "issues": "https://github.com/TomasVotruba/type-coverage/issues",
+                "source": "https://github.com/TomasVotruba/type-coverage/tree/2.0.2"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/rectorphp",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/tomasvotruba",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-01-07T00:10:26+00:00"
         }
     ],
     "aliases": [],
