@@ -12,7 +12,7 @@ class Comment extends Model
     /**
      * Get the post that owns the comment.
      *
-     * @return BelongsTo<Post, Comment>
+     * @return BelongsTo<Post,self>
      */
     public function post(): BelongsTo
     {

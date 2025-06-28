@@ -12,7 +12,7 @@ class Post extends Model
     /**
      * Get the comments for the post.
      *
-     * @return HasMany<Comment, Post>
+     * @return HasMany<Comment,self>
      */
     public function comments(): HasMany
     {

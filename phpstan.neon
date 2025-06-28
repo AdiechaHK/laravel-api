@@ -9,9 +9,6 @@ parameters:
         - bootstrap/app.php
         - database
         - resources
-    excludePaths:
-        - app/Models/User.php
-        - app/Http/Resources/UserResource.php
     ignoreErrors:
         - '#Method App\\Models\\Comment::post\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<.*> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsTo<.*>\.#'
         - '#Method App\\Models\\Post::comments\(\) should return Illuminate\\Database\\Eloquent\\Relations\\HasMany<.*> but returns Illuminate\\Database\\Eloquent\\Relations\\HasMany<.*>\.#'
