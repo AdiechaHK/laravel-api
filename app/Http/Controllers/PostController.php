@@ -13,7 +13,7 @@ class PostController extends Controller
 {
     public function index(): PostCollection
     {
-        return PostCollection::make(Post::with('comments')->get());
+            return PostCollection::make(Post::with('comments')->get());
     }
 
     public function store(StorePostRequest $request): PostResource
