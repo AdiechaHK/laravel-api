@@ -1,61 +1,278 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 Laravel API Demo - Modern Development Practices
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> **A production-ready Laravel API showcasing modern development practices, JWT authentication, and code quality standards.**
 
-## About Laravel
+This repository demonstrates a complete Laravel API implementation with best practices, perfect for tech talks, workshops, and learning modern PHP development.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🎯 What This Demo Covers
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🔐 Authentication & Security
+- **JWT Authentication** using `php-open-source-saver/jwt-auth`
+- **Authorization Policies** for Posts and Comments
+- **Form Request Validation** with custom rules
+- **Secure API endpoints** with proper middleware
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🏗️ Architecture & Design
+- **RESTful API Design** with proper resource routing
+- **Eloquent Relationships** (Posts ↔ Comments)
+- **API Resources** for consistent JSON responses
+- **Shallow Resource Routing** for cleaner URLs
 
-## Learning Laravel
+### 🛠️ Code Quality & Standards
+- **PHPStan Level 10** static analysis
+- **Larastan** for Laravel-specific analysis
+- **Type Hints & Return Types** throughout
+- **PHPDoc Annotations** for better IDE support
+- **Clean Code Principles** applied
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 📊 Database & Models
+- **Eloquent ORM** with proper relationships
+- **Database Migrations** for version control
+- **Mass Assignment Protection** with `$fillable`
+- **Timestamps** and proper indexing
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🚀 Quick Start
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Prerequisites
+- PHP 8.2+
+- Composer
+- MySQL/PostgreSQL/SQLite
+- Node.js (for frontend if needed)
 
-## Laravel Sponsors
+### Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+# Clone the repository
+git clone <your-repo-url>
+cd laravel-api
 
-### Premium Partners
+# Install dependencies
+composer install
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+# Copy environment file
+cp .env.example .env
 
-## Contributing
+# Generate application key
+php artisan key:generate
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Configure your database in .env
+DB_CONNECTION=sqlite
+DB_DATABASE=database/database.sqlite
 
-## Code of Conduct
+# Run migrations
+php artisan migrate
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Start the development server
+php artisan serve
+```
 
-## Security Vulnerabilities
+### Testing the API
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+# Run PHPStan analysis
+composer phpstan
 
-## License
+# Run tests
+php artisan test
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📚 API Endpoints
+
+### Authentication
+```http
+POST /api/register
+POST /api/login
+POST /api/logout
+POST /api/refresh
+GET  /api/user-profile
+```
+
+### Posts
+```http
+GET    /api/posts          # List all posts
+POST   /api/posts          # Create a new post
+GET    /api/posts/{id}     # Get a specific post
+PUT    /api/posts/{id}     # Update a post
+DELETE /api/posts/{id}     # Delete a post
+```
+
+### Comments
+```http
+GET    /api/posts/{post}/comments  # List comments for a post
+POST   /api/posts/{post}/comments  # Create a comment for a post
+GET    /api/comments/{id}          # Get a specific comment (shallow)
+PUT    /api/comments/{id}          # Update a comment (shallow)
+DELETE /api/comments/{id}          # Delete a comment (shallow)
+```
+
+## 🔧 Key Features Explained
+
+### 1. JWT Authentication
+```php
+// User model implements JWTSubject
+class User extends Authenticatable implements JWTSubject
+{
+    public function getJWTIdentifier(): mixed
+    {
+        return $this->getKey();
+    }
+    
+    public function getJWTCustomClaims(): array
+    {
+        return [];
+    }
+}
+```
+
+### 2. Resource Controllers with Type Safety
+```php
+class PostController extends Controller
+{
+    public function index(): PostCollection
+    {
+        return PostCollection::make(Post::with('comments')->get());
+    }
+    
+    public function store(StorePostRequest $request): PostResource
+    {
+        $post = Post::create($request->validated());
+        return PostResource::make($post);
+    }
+}
+```
+
+### 3. Eloquent Relationships
+```php
+class Post extends Model
+{
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
+}
+
+class Comment extends Model
+{
+    public function post(): BelongsTo
+    {
+        return $this->belongsTo(Post::class);
+    }
+}
+```
+
+### 4. Form Request Validation
+```php
+class StorePostRequest extends FormRequest
+{
+    public function rules(): array
+    {
+        return [
+            'title' => 'required|string|max:255',
+            'body' => 'required|string',
+        ];
+    }
+}
+```
+
+### 5. API Resources
+```php
+class PostResource extends JsonResource
+{
+    public function toArray(Request $request): array
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'body' => $this->body,
+            'comments' => CommentResource::collection($this->whenLoaded('comments')),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+        ];
+    }
+}
+```
+
+## 🧪 Code Quality Tools
+
+### PHPStan Configuration
+```yaml
+# phpstan.neon
+parameters:
+    level: 10
+    paths:
+        - app
+        - routes/api.php
+    excludePaths:
+        - app/Models/User.php  # JWT interface issues
+    ignoreErrors:
+        - '#Method .*::post\(\) should return.*#'
+        - '#Method .*::comments\(\) should return.*#'
+```
+
+### Running Analysis
+```bash
+# Full analysis
+./vendor/bin/phpstan analyse --memory-limit=512M
+
+# Quick check
+composer phpstan
+```
+
+## 🏛️ Project Structure
+
+```
+laravel-api/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/     # API Controllers
+│   │   ├── Requests/        # Form Request Validation
+│   │   ├── Resources/       # API Resources
+│   │   └── Middleware/      # Custom Middleware
+│   ├── Models/              # Eloquent Models
+│   └── Policies/            # Authorization Policies
+├── database/
+│   └── migrations/          # Database Schema
+├── routes/
+│   └── api.php             # API Routes
+├── config/
+│   ├── auth.php            # Authentication Config
+│   └── passport.php        # JWT Config
+└── tests/                  # Test Suite
+```
+
+## 🎓 Learning Outcomes
+
+This demo showcases:
+
+1. **Modern PHP Development** with type safety and static analysis
+2. **Laravel Best Practices** for API development
+3. **Authentication Patterns** using JWT
+4. **Code Quality Standards** with PHPStan
+5. **RESTful API Design** principles
+6. **Database Design** with proper relationships
+7. **Security Considerations** in API development
+
+## 🤝 Contributing
+
+This is a demo repository, but contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Ensure PHPStan passes
+5. Submit a pull request
+
+## 📄 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## 🙏 Acknowledgments
+
+- **Laravel Team** for the amazing framework
+- **PHPStan** for static analysis tools
+- **Larastan** for Laravel-specific analysis
+- **JWT Auth** for authentication implementation
+
+---
+
+**Perfect for:** Tech talks, workshops, learning Laravel, API development demonstrations, and showcasing modern PHP practices! 🚀
